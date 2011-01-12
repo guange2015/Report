@@ -12,6 +12,20 @@ gem "cgi_multipart_eof_fix"
 gem "fastthread"
 gem "rufus-scheduler","2.0.8"
 
+group :development do
+	gem 'rspec-rails', '2.3.1'
+	gem 'annotate-models', '1.0.4'
+	gem 'faker', '0.3.1'
+end
+
+group :test do
+  gem 'rspec', '2.3.0'
+  gem 'webrat', '0.7.1'
+  gem 'spork', '0.8.4'
+  #gem 'capybara', '0.4.0'
+end
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

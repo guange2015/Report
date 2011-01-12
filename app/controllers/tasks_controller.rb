@@ -7,8 +7,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = current_user.tasks.all
-    @finished = @tasks.find(:created_at => Time.zone.today..(Time.zone.today+1.day))
+    @tasks = current_user.tasks
+    @finished = !(@tasks.where(:created_at => Time.zone.today..(Time.zone.today+1.day)).empty?)
+    p "finished = "+@finished.inspect
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
