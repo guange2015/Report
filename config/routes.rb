@@ -1,4 +1,6 @@
 Report::Application.routes.draw do
+  resources :tasks
+
   resources :users
 
   resource :session, :only => [:new, :create, :destroy]
@@ -63,6 +65,7 @@ Report::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  root :to => "tasks#index"
 
   # See how all your routes lay out with "rake routes"
 

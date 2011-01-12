@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
   set_table_name 'users'
+  has_many :tasks
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -54,7 +55,7 @@ class User < ActiveRecord::Base
     
   def make_activation_code
         self.deleted_at = nil
-        self.activation_code = self.class.make_token
+        self.activation_code ||= self.class.make_token
   end
 
 
