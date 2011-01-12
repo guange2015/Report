@@ -6,6 +6,16 @@ class UserMailer < ActionMailer::Base
     logger.debug "user === "+ user.inspect
     logger.debug "activate url = #{@url}"
   end
+
+  def tasks_list
+    @recipients  = "huangxiaoguang@talkweb.com.cn"
+    @from        = "huangxiaoguang@talkweb.com.cn"
+    @subject     = ""
+    @sent_on     = Time.now
+
+    @subject = "tasks list"
+     @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+  end
   
   def activation(user)
     setup_email(user)

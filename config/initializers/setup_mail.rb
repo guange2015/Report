@@ -1,3 +1,4 @@
+#ActionMailer::Base.default_charset = "GBK"
 ActionMailer::Base.smtp_settings ={
 	:address => 'mail.talkweb.com.cn',
 	:domain => 'talkweb.com.cn',

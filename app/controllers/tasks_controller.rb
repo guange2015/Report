@@ -85,4 +85,9 @@ class TasksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def tasks_list
+    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+    render :template => 'user_mailer/tasks_list'
+  end
 end
