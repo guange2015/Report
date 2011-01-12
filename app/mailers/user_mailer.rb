@@ -8,7 +8,10 @@ class UserMailer < ActionMailer::Base
   end
 
   def tasks_list
-    @recipients  = "huangxiaoguang@talkweb.com.cn"
+    @recipients = []
+    User.all.each do |user|
+	@recipients << user.email
+    end
     @from        = "huangxiaoguang@talkweb.com.cn"
     @subject     = ""
     @sent_on     = Time.now

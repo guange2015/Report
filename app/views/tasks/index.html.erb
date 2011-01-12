@@ -24,4 +24,6 @@
 
 <br />
 
-<%= link_to '新日报', new_task_path %>
+<% unless @finished %>
+<%= link_to '写日报', new_task_path %>
+<% end %>

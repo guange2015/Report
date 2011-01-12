@@ -1,4 +1,7 @@
+<h1><%= Time.zone.today %>日报</h1>
+<hr>
 <% @tasks.each do |task| %>
   <%= task.user.login %> <br/>
   <%= task.content %> <br/>
+  <p/>
 <% end %>

@@ -7,8 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
 <%= yield %>
-
+<hr>
+<div> 
+<%= link_to "当日总表", list_path %> -- 
+<%= link_to "我的日报", tasks_path %> -- 
+<%= link_to "注册", signup_path %> -- 
+<%= link_to "登陆", login_path %> -- 
+<%= link_to "注销", logout_path %> -- 
+</div> 
 </body>
 </html>
