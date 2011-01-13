@@ -3,8 +3,36 @@
 <head>
   <title>Report</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag "/jquery-bbedit/bbedit.css" %>
+  <%#= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery1.4.4.min",
+                             "jquery_rails" %>
+  <%= javascript_include_tag "/jquery-bbedit/jquery.bbedit.min.js" %>
   <%= csrf_meta_tag %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Full feature editor with custom language
+      $("#text1").bbedit({
+        lang: 'zh-cn',
+        highlight: true,
+        enableSmileybar: false
+
+      });
+      // Smiley editor
+      $("#text2").bbedit({
+        enableToolbar: false,
+        smilies: 'biggrin,cry,dizzy,funk,huffy,lol,loveliness,mad,|,sad,shocked,shy,sleepy,smile,sweat,titter,tongue'
+      });
+      // Bbcode editor with highlight
+      $("#text3").bbedit({
+        highlight: true,
+        enableSmileybar: false,
+        tags: 'b,i,u,s,url,img,code,quote'
+      });
+    });
+    </script>
+  
 </head>
 <body>
 <%= yield %>

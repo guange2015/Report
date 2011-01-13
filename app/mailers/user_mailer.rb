@@ -10,12 +10,12 @@ class UserMailer < ActionMailer::Base
   def tasks_list
     @recipients = []
     User.all.each do |user|
-	@recipients << user.email if user.active?
+	    @recipients << user.email if user.active?
     end
     @from        = "huangxiaoguang@talkweb.com.cn"
     @subject     = ""
     @sent_on     = Time.now
-
+    self.content_type = "text/html"
     @subject = "tasks list"
      @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
   end
@@ -34,6 +34,8 @@ class UserMailer < ActionMailer::Base
     @subject     = ""
     @sent_on     = Time.now
     @user = user
+
+    self.content_type = "text/plain"
   end
 
 end
