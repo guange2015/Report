@@ -7,15 +7,19 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem "mongrel","1.2.0.pre2"
-gem "cgi_multipart_eof_fix"
-gem "fastthread"
 gem "rufus-scheduler","2.0.8"
 
 group :development do
-	gem 'rspec-rails', '2.3.1'
-	gem 'annotate-models', '1.0.4'
-	gem 'faker', '0.3.1'
+  gem "mongrel","1.2.0.pre2"
+  gem "cgi_multipart_eof_fix"
+  gem "fastthread"
+
+  gem 'nokogiri','1.4.4'
+  gem 'ruby-debug', '0.10.4'
+  gem 'ruby-debug-ide','0.4.16'
+  gem 'rspec-rails', '2.3.1'
+  gem 'annotate-models', '1.0.4'
+  gem 'faker', '0.3.1'
 end
 
 group :test do
