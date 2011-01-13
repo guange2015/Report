@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
   def tasks_list
     @recipients = []
     User.all.each do |user|
-	@recipients << user.email
+	@recipients << user.email if user.active?
     end
     @from        = "huangxiaoguang@talkweb.com.cn"
     @subject     = ""
