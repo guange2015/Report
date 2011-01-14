@@ -1,4 +1,29 @@
-<%= form_for(@task) do |f| %>
+<script>
+    KE.show({
+        id : 'content1',
+        shadowMode : false,
+        autoSetDataMode: false,
+        allowPreviewEmoticons : false,
+        afterCreate : function(id) {
+            KE.event.ctrl(document, 13, function() {
+                KE.util.setData(id);
+                document.forms['new_task'].submit();
+            });
+            KE.event.ctrl(KE.g[id].iframeDoc, 13, function() {
+                KE.util.setData(id);
+                document.forms['new_task'].submit();
+            });
+
+            KE.event.add(KE.$('new_task'), 'submit', function() {
+                KE.util.setData(id);
+            });
+        }
+    });
+
+</script>
+
+
+<%= form_for(@task,:html => {:id=>"new_task", :name =>'new_task'} ) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,10 +37,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :id=>"text1" %>
+    <%= f.label "内容" %><br />
+    <%= f.text_area :content, :id=>"content1",
+                    :style =>'width:500px;height:200px;visibility:hidden;' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交" %>
   </div>
 <% end %>

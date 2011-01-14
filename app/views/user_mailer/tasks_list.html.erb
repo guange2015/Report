@@ -2,6 +2,6 @@
 <hr>
 <% @tasks.each do |task| %>
   <%= task.user.login %> <br/>
-  <%= task.content %> <br/>
+  <%= raw task.content %> <br/>
   <p/>
 <% end %>

@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @task.user %>
+  <b>用户名:</b><br/>
+  <%= @task.user.login %>
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @task.content %>
+  <b>日报内容:</b><br/>
+  <%= raw @task.content %>
 </p>
 
 
