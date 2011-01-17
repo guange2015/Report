@@ -42,3 +42,5 @@ module Report
     config.filter_parameters += [:password]
   end
 end
+
+require 'hack_log_tailer'

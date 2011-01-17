@@ -12,12 +12,31 @@ class UserMailer < ActionMailer::Base
     User.all.each do |user|
 	    @recipients << user.email if user.active?
     end
+
+    @recipients << "lindianxuan@talkweb.com.cn"
+    @recipients << "yzh@talkweb.com.cn"
+    @recipients << "penggegang@talkweb.com.cn"
+    @recipients << "liangwei@talkweb.com.cn"
+    @recipients << "leiru@talkweb.com.cn"
+
     @from        = "huangxiaoguang@talkweb.com.cn"
     @subject     = ""
     @sent_on     = Time.now
     self.content_type = "text/html"
-    @subject = "tasks list"
-     @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+    @subject = "客户端"+Time.zone.today.to_s+"日报"
+    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+  end
+
+  def test_tasks_list
+    @recipients = ["huangxiaoguang@talkweb.com.cn"]
+
+    @from        = "huangxiaoguang@talkweb.com.cn"
+    @subject     = ""
+    @sent_on     = Time.now
+    self.content_type = "text/html"
+    @subject = "客户端"+Time.zone.today.to_s+"日报"
+    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+
   end
   
   def activation(user)
