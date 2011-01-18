@@ -18,8 +18,11 @@
             KE.event.add(KE.$('new_task'), 'submit', function() {
                 KE.util.setData(id);
             });
-            KE.toolbar.select(id, 'insertorderedlist');
-            KE.util.execCommand(id, 'insertorderedlist', null);
+
+            if(KE.isEmpty('content1')){
+                KE.toolbar.select(id, 'insertorderedlist');
+                KE.util.execCommand(id, 'insertorderedlist', null);
+            }
         }
     });
 
