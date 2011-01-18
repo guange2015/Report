@@ -12,14 +12,14 @@
   </tr>
   </thead>
   <tbody>
-  <% @tasks.each do |task| %>
+  <% @format_tasks.each do |user_name,task_list| %>
   <tr>
-    <td style ="border: 1px solid #999;" width=50><%= task.user.name %></td>
-    <td style ="border: 1px solid #999;" width=200><%= raw task.content %></td>
-    <td style ="border: 1px solid #999;" width=200></td>
-    <td style ="border: 1px solid #999;" width=200></td>
-    <td style ="border: 1px solid #999;" width=200></td>
-    <td style ="border: 1px solid #999;" width=200></td>
+    <td style ="border: 1px solid #999;" width=50><%= user_name %></td>
+    <td style ="border: 1px solid #999;" width=200><%= raw task_list[1] %></td>
+    <td style ="border: 1px solid #999;" width=200><%= raw task_list[2] %></td>
+    <td style ="border: 1px solid #999;" width=200><%= raw task_list[3] %></td>
+    <td style ="border: 1px solid #999;" width=200><%= raw task_list[4] %></td>
+    <td style ="border: 1px solid #999;" width=200><%= raw task_list[5] %></td>
   </tr>
 <% end %>
   </tbody>

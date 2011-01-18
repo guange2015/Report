@@ -1,4 +1,6 @@
 class UserMailer < ActionMailer::Base
+  include TasksListSystem
+  
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Please activate your new account'
@@ -24,7 +26,7 @@ class UserMailer < ActionMailer::Base
     @sent_on     = Time.now
     self.content_type = "text/html"
     @subject = "客户端"+Time.zone.today.to_s+"日报"
-    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+    get_tasks_list
   end
 
   def test_tasks_list
@@ -35,8 +37,7 @@ class UserMailer < ActionMailer::Base
     @sent_on     = Time.now
     self.content_type = "text/html"
     @subject = "客户端"+Time.zone.today.to_s+"日报"
-    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
-
+    get_tasks_list
   end
   
   def activation(user)

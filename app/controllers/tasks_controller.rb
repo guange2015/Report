@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   include AuthenticatedSystem
-
+  include TasksListSystem
   # Protect these actions behind an admin login
   before_filter :login_required
 
@@ -88,7 +88,7 @@ class TasksController < ApplicationController
   end
 
   def tasks_list
-    @tasks = Task.where(:created_at => Time.zone.today..(Time.zone.today+1.day))
+    get_tasks_list
     render :template => 'user_mailer/tasks_list'
   end
 end
