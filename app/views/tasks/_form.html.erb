@@ -3,7 +3,9 @@
         id : 'content1',
         shadowMode : false,
         autoSetDataMode: false,
+        items : ['insertorderedlist'],
         allowPreviewEmoticons : false,
+
         afterCreate : function(id) {
             KE.event.ctrl(document, 13, function() {
                 KE.util.setData(id);
@@ -13,10 +15,11 @@
                 KE.util.setData(id);
                 document.forms['new_task'].submit();
             });
-
             KE.event.add(KE.$('new_task'), 'submit', function() {
                 KE.util.setData(id);
             });
+            KE.toolbar.select(id, 'insertorderedlist');
+            KE.util.execCommand(id, 'insertorderedlist', null);
         }
     });
 

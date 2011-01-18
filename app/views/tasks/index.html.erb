@@ -1,14 +1,17 @@
-<h1>日报列表</h1>
+<h1><%= current_user.name %>的日报列表</h1>
 
 
 <% @tasks.each do |task| %>
-
-    <%= task.user.login %> <%= task.created_at.strftime("%Y-%m-%d") %><br/>
-    <%= raw task.content %><br/>
     <%#= link_to 'Show', task %>
+    <% if task.created_at.strftime("%Y-%m-%d") == Time.zone.today.to_s %>
+        今天<br/>
+        <%= raw task.content %><br/>
     <%= link_to '编辑', edit_task_path(task) %>|
     <%= link_to '删除', task, :confirm => 'Are you sure?', :method => :delete %><br/>
-
+        <% else %>
+        <%= task.created_at.strftime("%Y-%m-%d") %><br/>
+        <%= raw task.content %><br/>
+    <% end %>
 <% end %>
 
 <br />

@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order("created_at DESC")
     @finished = !(@tasks.where(:created_at => Time.zone.today..(Time.zone.today+1.day)).empty?)
     p "finished = "+@finished.inspect
     respond_to do |format|
