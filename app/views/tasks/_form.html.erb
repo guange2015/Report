@@ -5,6 +5,10 @@
         autoSetDataMode: false,
         items : ['insertorderedlist'],
         allowPreviewEmoticons : false,
+        filterMode: true,
+        htmlTags : {
+            'ol,ul,li,br' :[]
+        },
 
         afterCreate : function(id) {
             KE.event.ctrl(document, 13, function() {
