@@ -2,14 +2,16 @@ class TasksController < ApplicationController
   include AuthenticatedSystem
   include TasksListSystem
   # Protect these actions behind an admin login
-  before_filter :login_required
+  before_filter :login_required, :except => :tasks_list
 
   # GET /tasks
   # GET /tasks.xml
   def index
     @tasks = current_user.tasks.order("created_at DESC")
     @finished = !(@tasks.where(:created_at => Time.zone.today..(Time.zone.today+1.day)).empty?)
-    p "finished = "+@finished.inspect
+    unless @finished
+      @task = current_user.tasks.build
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -50,8 +52,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :notice => 'Task was successfully created.') }
+        format.html { redirect_to(:action => :index, :notice => '日报提交成功.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
@@ -66,8 +69,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(tasks_path, :notice => '日报修改成功.') }
         format.xml  { head :ok }
+        format.js   {render :template =>'create.js.erb'}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }

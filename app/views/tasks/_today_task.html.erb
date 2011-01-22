@@ -1,0 +1,4 @@
+今天<br/>
+        <%= raw task.content %><br/>
+    <%= link_to '编辑', edit_task_path(task) %>|
+    <%= link_to '删除', task, :confirm => '确定删除吗?', :method => :delete %><br/>

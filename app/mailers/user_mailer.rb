@@ -10,6 +10,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def tasks_list
+    return if get_tasks_list #当前无人写日报，不发送
     @recipients = []
     User.all.each do |user|
 	    @recipients << user.email if user.active?
@@ -26,7 +27,6 @@ class UserMailer < ActionMailer::Base
     @sent_on     = Time.now
     self.content_type = "text/html"
     @subject = "客户端"+Time.zone.today.to_s+"日报"
-    get_tasks_list
   end
 
   def test_tasks_list
