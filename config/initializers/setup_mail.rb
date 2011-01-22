@@ -5,7 +5,7 @@ ActionMailer::Base.smtp_settings ={
 	:domain => 'talkweb.com.cn',
 	:port => '25',
 	:user_name => 'huangxiaoguang',
-	:password => 'china2008',
+	:password => 'china20081',
 	:authentication => :login
 }
 ADMINEMAIL = 'huangxiaoguang@talkweb.com.cn'
