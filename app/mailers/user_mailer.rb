@@ -11,6 +11,9 @@ class UserMailer < ActionMailer::Base
 
   def tasks_list
     return if get_tasks_list #当前无人写日报，不发送
+
+    auto_fill_forget(@format_tasks, Time.zone.today.wday)
+
     @recipients = []
     User.all.each do |user|
 	    @recipients << user.email if user.active?
@@ -31,6 +34,7 @@ class UserMailer < ActionMailer::Base
 
   def test_tasks_list
     return if get_tasks_list #当前无人写日报，不发送
+    auto_fill_forget(@format_tasks, Time.zone.today.wday)
     @recipients = ["huangxiaoguang@talkweb.com.cn"]
 
     @from        = "huangxiaoguang@talkweb.com.cn"

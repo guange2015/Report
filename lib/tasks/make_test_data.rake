@@ -1,3 +1,4 @@
+#coding=utf-8
 namespace :db  do
   desc "user all"
   task :userall=>:environment do

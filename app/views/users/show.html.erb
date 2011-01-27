@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>用户名:</b><br/>
+  <%= current_user.login %>
+</p>
+
+<p>
+  <b>真实姓名:</b><br/>
+  <%= current_user.name %>
+</p>
+
+<p>
+  <b>自动留言（当忘记写日报时，会自动填上下面的内容):</b><br/>
+  <%= raw current_user.content %>
+</p>
+
+
+<%= link_to '修改', edit_user_path(current_user) %>
