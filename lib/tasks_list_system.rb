@@ -22,6 +22,6 @@ module TasksListSystem
         format_tasks[user.name][wday] = ''
       end
     end
->>>>>>> fill-forget
+
   end
 end
