@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110112033135) do
+ActiveRecord::Schema.define(:version => 20110122134115) do
 
   create_table "tasks", :force => true do |t|
     t.integer  "user_id"
@@ -36,5 +36,19 @@ ActiveRecord::Schema.define(:version => 20110112033135) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "wiki_items", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wikis", :force => true do |t|
+    t.integer  "wiki_item_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

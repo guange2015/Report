@@ -1,5 +1,5 @@
+#coding=utf-8
 class TasksController < ApplicationController
-  include AuthenticatedSystem
   include TasksListSystem
   # Protect these actions behind an admin login
   before_filter :login_required, :except => :tasks_list

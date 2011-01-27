@@ -1,0 +1,53 @@
+<script>
+    KE.show({
+        id : 'content1',
+        shadowMode : false,
+        autoSetDataMode: false,
+        allowPreviewEmoticons : false,
+
+        afterCreate : function(id) {
+            KE.event.ctrl(document, 13, function() {
+                KE.util.setData(id);
+                document.forms['new_wiki'].submit();
+            });
+            KE.event.ctrl(KE.g[id].iframeDoc, 13, function() {
+                KE.util.setData(id);
+                document.forms['new_wiki'].submit();
+            });
+            KE.event.add(KE.$('new_wiki'), 'submit', function() {
+                KE.util.setData(id);
+            });
+
+        
+        }
+    });
+
+</script>
+
+
+<%= form_for(@wiki,:html => {:id=>"new_wiki", :name =>'new_wiki'} ) do |f| %>
+  <% if @wiki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wiki.errors.count, "error") %> :</h2>
+
+      <ul>
+      <% @wiki.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "分类" %> <%= select_tag "wiki[wiki_item_id]",
+                             options_from_collection_for_select(WikiItem.all, "id","name" ) %>
+  </div>
+  <div class="field">
+    <%= f.label "内容" %><br />
+    <%= f.text_area :content, :id=>"content1",
+                    :style =>'width:900px;height:400px;visibility:hidden;' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

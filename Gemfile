@@ -7,15 +7,16 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem "rufus-scheduler","2.0.8"
-
 group :development do
-  gem "mongrel","1.2.0.pre2"
+  gem "mongrel",">=1.2.0.pre2"
   gem "cgi_multipart_eof_fix"
   gem "fastthread"
+  #gem "dispatch"	
 
-  gem 'nokogiri','1.4.4'
-  gem 'ruby-debug', '0.10.4'
+  gem 'nokogiri','1.4.4.1'
+  gem 'ruby-debug19', '0.11.6', :require =>'ruby_debug'
+  gem 'ruby-debug-base19', '0.11.24'
+  gem 'ruby-debug-ide19','0.4.12'
   gem 'ruby-debug-ide','0.4.16'
   gem 'rspec-rails', '2.3.1'
   gem 'annotate-models', '1.0.4'

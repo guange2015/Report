@@ -5,11 +5,14 @@ Report::Application.routes.draw do
 
   resource :session, :only => [:new, :create, :destroy]
 
+  resources :wikis
+
   match 'signup' => 'users#new', :as => :signup
 
   match 'register' => 'users#create', :as => :register
 
-  match 'login' => 'sessions#new', :as => :login
+  match 'login' => 'sessions#new',
+        :as => :login
 
   match 'logout' => 'sessions#destroy', :as => :logout
 

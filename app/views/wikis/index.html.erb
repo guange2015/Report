@@ -1,0 +1,11 @@
+<h1>wiki列表</h1>
+
+<p id="notice"><%= notice %></p>
+
+<% @wikis.each do |wiki| %>
+    <%= wiki.title %><br/>
+    <%= raw wiki.content %><br/>
+<% end %>
+
+
+
