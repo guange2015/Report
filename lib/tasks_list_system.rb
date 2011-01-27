@@ -11,6 +11,17 @@ module TasksListSystem
       @format_tasks[task.user.name][task.created_at.wday] = task.content
     end
 
-    Task.where(:created_at => Time.zone.today..(Time.zone.today+1)).empty?
+    Task.where(:created_at => Time.zone.today..(Time.zone.today+1)).size > 10
+  end
+
+  def auto_fill_forget(format_tasks, wday)
+    User.where(:state=>'active').each do |user|
+      unless format_tasks[user.name][wday]
+        format_tasks[user.name][wday] = user.content
+      else
+        format_tasks[user.name][wday] = ''
+      end
+    end
+>>>>>>> fill-forget
   end
 end

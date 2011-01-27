@@ -5,7 +5,21 @@ class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
+  before_filter :login_required, :only => [:show, :edit, :update]
+
+  def show
+  end
   
+  def edit    
+  end
+
+  def update
+    if current_user.update_attributes(params[:user])
+      redirect_to :action => :show
+    else
+      render :action => :edit
+    end
+  end
 
   # render new.rhtml
   def new

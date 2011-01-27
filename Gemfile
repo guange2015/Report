@@ -11,9 +11,7 @@ group :development do
   gem "mongrel",">=1.2.0.pre2"
   gem "cgi_multipart_eof_fix"
   gem "fastthread"
-  #gem "dispatch"	
-
-  gem 'nokogiri','1.4.4.1'
+  
   gem 'ruby-debug19', '0.11.6', :require =>'ruby_debug'
   gem 'ruby-debug-base19', '0.11.24'
   gem 'ruby-debug-ide19','0.4.12'
@@ -24,6 +22,7 @@ group :development do
 end
 
 group :test do
+  #gem 'nokogiri','1.4.4.1'
   gem 'rspec', '2.3.0'
   gem 'webrat', '0.7.1'
   gem 'spork', '0.8.4'
