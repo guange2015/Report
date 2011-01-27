@@ -22,7 +22,7 @@ group :development do
 end
 
 group :test do
-  gem 'nokogiri','1.4.4.1'
+  #gem 'nokogiri','1.4.4.1'
   gem 'rspec', '2.3.0'
   gem 'webrat', '0.7.1'
   gem 'spork', '0.8.4'
