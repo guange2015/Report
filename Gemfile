@@ -12,7 +12,7 @@ group :development do
   gem "cgi_multipart_eof_fix"
   gem "fastthread"
   
-  gem 'ruby-debug19', '0.11.6', :require =>'ruby_debug'
+  gem 'ruby-debug19', '0.11.6'
   gem 'ruby-debug-base19', '0.11.24'
   gem 'ruby-debug-ide19','0.4.12'
   gem 'ruby-debug-ide','0.4.16'
